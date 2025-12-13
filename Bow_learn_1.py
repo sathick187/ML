@@ -28,8 +28,8 @@ for i in range(0,len(message)):
     review=[ps.stem(word) for word in review if word not in stopwords.words("english")]
     review=" ".join(review)
     corpus.append(review)
-for y in corpus:
-    print(y)
+# for y in corpus:
+#     print(y)
 # print(corpus)
 
 
@@ -39,6 +39,16 @@ from sklearn.feature_extraction.text import CountVectorizer
 cv=CountVectorizer(max_features=100,binary=True)
 
 x=cv.fit_transform(corpus).toarray()
-print(x)
+# print(x)
+
+
+## N Grams
+
+from sklearn.feature_extraction.text import CountVectorizer
+cv=CountVectorizer(max_features=100,binary=True,ngram_range=(1,2))
+
+x=cv.fit_transform(corpus).toarray()
+# print(x)
+print(cv.vocabulary_)
 
 
